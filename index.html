@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Seva | Tax, Legal & Financial Services</title>
+    
+    <!-- External UI Framework (Tailwind) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS SDK for Email Automation -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        /* Internal CSS for custom branding */
+        :root {
+            --navy: #1a237e;
+            --gold: #d4af37;
+            --slate: #708090;
+        }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .bg-navy { background-color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .btn-gold { 
+            background-color: var(--gold); 
+            color: var(--navy); 
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover { 
+            background-color: #bfa030; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 6px solid var(--navy);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .lic-card { border-bottom: 6px solid var(--gold); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="bg-navy text-white p-5 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-gold">Universal Seva</h1>
+                <p class="text-[10px] uppercase tracking-[0.2em] opacity-70">Tax, Legal & Insurance Solutions</p>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#services" class="hover:text-gold transition">Services</a>
+                <a href="#intake" class="bg-gold text-navy px-5 py-2 rounded font-bold">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-navy text-white py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">Simplify Your Taxes.<br>Secure Your Future.</h2>
+            <p class="text-xl mb-10 text-gray-300 font-light italic">Comprehensive ITR Filing, Legal Advocacy, and LIC Insurance Solutions at Universal Seva.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="selectService('ITR Filing')" class="btn-gold py-4 px-10 rounded font-bold text-lg">File ITR Now</button>
+                <button onclick="selectService('Legal Consultation')" class="border-2 border-gold text-gold py-4 px-10 rounded font-bold hover:bg-gold hover:text-navy transition">Consult an Expert</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-navy mb-4">Our Professional Services</h2>
+            <div class="w-24 h-1 bg-gold mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+            <!-- ITR Filing -->
+            <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                <div class="text-4xl mb-4 text-navy">📊</div>
+                <h3 class="text-2xl font-bold text-navy mb-3">ITR Filing</h3>
+                <p class="text-gray-600 mb-6">Expert tax planning and hassle-free filing for individuals, businesses, and NRIs.</p>
+                <button onclick="selectService('ITR Filing')" class="text-navy font-bold flex items-center hover:text-gold">Book Service <span class="ml-2">→</span></button>
+            </div>
+
+            <!-- Legal Consultation -->
+            <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                <div class="text-4xl mb-4 text-navy">⚖️</div>
+                <h3 class="text-2xl font-bold text-navy mb-3">Legal Consultations</h3>
+                <p class="text-gray-600 mb-6">Professional guidance for civil matters, corporate needs, and document vetting.</p>
+                <button onclick="selectService('Legal Consultation')" class="text-navy font-bold flex items-center hover:text-gold">Request Meeting <span class="ml-2">→</span></button>
+            </div>
+
+            <!-- LIC Policy -->
+            <div class="service-card lic-card bg-white p-8 rounded-xl shadow-md">
+                <div class="text-4xl mb-4 text-navy">🛡️</div>
+                <h3 class="text-2xl font-bold text-navy mb-3">LIC Policy </h3>
+                <p class="text-gray-600 mb-6">Secure your family's future with personalized LIC life insurance plans.</p>
+                <button onclick="selectService('LIC Policy Booking')" class="text-navy font-bold flex items-center hover:text-gold">Get a Quote <span class="ml-2">→</span></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intake & Checkout Form -->
+    <section id="intake" class="py-24 bg-gray-100 px-6">
+        <div class="max-w-3xl mx-auto bg-white p-10 rounded-2xl shadow-2xl border border-gray-200">
+            <div class="mb-10">
+                <h2 id="form-heading" class="text-3xl font-bold text-navy mb-2">Service Intake Form</h2>
+                <p class="text-gray-500">All details are encrypted and sent directly to the Universal Seva team.</p>
+            </div>
+
+            <form id="advocate-form" class="space-y-6">
+                <!-- Hidden Field to Capture Selected Service -->
+                <input type="hidden" id="service_type" name="service_type" value="General Inquiry">
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-widest">Full Name</label>
+                    <input type="text" name="from_name" required class="w-full bg-gray-50 p-4 border border-gray-200 rounded outline-none focus:border-navy transition">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-widest">Email Address</label>
+                        <input type="email" name="reply_to" required class="w-full bg-gray-50 p-4 border border-gray-200 rounded outline-none focus:border-navy transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-widest">Phone Number</label>
+                        <input type="tel" name="phone_number" required class="w-full bg-gray-50 p-4 border border-gray-200 rounded outline-none focus:border-navy transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-widest">Issue / Requirement Details</label>
+                    <textarea name="message" rows="4" required class="w-full bg-gray-50 p-4 border border-gray-200 rounded outline-none focus:border-navy transition" placeholder="Please describe your case or tax requirements..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full btn-gold py-5 rounded font-bold text-lg uppercase tracking-widest">Submit & Proceed</button>
+            </form>
+
+            <!-- Calendly Container (Hidden by default) -->
+            <div id="calendar-section" class="mt-12 hidden border-t pt-10">
+                <h3 class="text-xl font-bold text-navy mb-6 text-center">Select Your Meeting Slot</h3>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_CALENDLY_LINK" style="min-width:320px;height:630px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-12 text-center border-t border-gray-800">
+        <p class="text-gold font-bold text-lg mb-2">Universal Seva</p>
+        <p class="text-sm opacity-60">Professional Tax & Legal Services © 2026</p>
+    </footer>
+
+    <!-- Internal JavaScript for Logic & Email Automation -->
+    <script>
+        // Initialize EmailJS with your specific Public ID
+        (function() {
+            emailjs.init("RRC8eUVI7VbFtxUlJ");
+        })();
+
+        // Handle Service Selection Flow
+        function selectService(name) {
+            document.getElementById('service_type').value = name;
+            document.getElementById('form-heading').innerText = "Requesting: " + name;
+            document.getElementById('intake').scrollIntoView({ behavior: 'smooth' });
+            
+            // Adjust button text for meetings
+            if(name === 'Legal Consultation') {
+                document.getElementById('submit-btn').innerText = "Submit & Book Time Slot";
+            } else {
+                document.getElementById('submit-btn').innerText = "Submit Details";
+            }
+        }
+
+        // Form Submission Logic
+        document.getElementById('advocate-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = "SENDING SECURELY...";
+            btn.disabled = true;
+
+            // Send form data via EmailJS using your specific Service ID and Template ID
+            emailjs.sendForm('service_w4txrs8', 'template_5obpmwr', this)
+                .then(function() {
+                    alert('Submission Successful! The Universal Seva team has been notified.');
+                    btn.innerText = "DETAILS SUBMITTED";
+                    
+                    // Show Calendly if it was a Legal Consultation
+                    if(document.getElementById('service_type').value === 'Legal Consultation') {
+                        document.getElementById('calendar-section').classList.remove('hidden');
+                        document.getElementById('calendar-section').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, function(error) {
+                    alert('Error sending details. Please check your EmailJS configuration.');
+                    console.log('Error:', error);
+                    btn.innerText = "RETRY SUBMISSION";
+                    btn.disabled = false;
+                });
+        });
+    </script>
+
+</body>
+</html>
